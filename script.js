@@ -53,10 +53,12 @@ function playGame() {
         computerCounter++;
         //PRINT that the computer won the round
         console.log("You lost the round :C");
+        break;
       //no one...
       case "tie":
         //PRINT that it was a tie
         console.log("the round is a tie!");
+        break;
     }
   }
 }
@@ -72,21 +74,18 @@ function getComputerChoice() {
       computerChoice = "r";
       //Return the computer's choice
       return computerChoice;
-      break;
     //Paper
     case 1:
       //ASSIGN Paper as the computer's choice
       computerChoice = "p";
       //Return the computer's choice
       return computerChoice;
-      break;
     //Scissors
     case 2:
       //ASSIGN Scissors as the computer's choice
       computerChoice = "s";
       //Return the computer's choice
       return computerChoice;
-      break;
   }
   //console.log(computerChoice);
 }
