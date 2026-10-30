@@ -2,7 +2,7 @@
 
 //FUNCTION to run to start the game
 function playGame() {
-    //ASSIGN counters for points of each player
+  //ASSIGN counters for points of each player
   let humanCounter = 0;
   let computerCounter = 0;
   //PRINT message to announce the start of the game
@@ -15,7 +15,6 @@ function playGame() {
     console.log(`Round ${i + 1}`);
     console.log(`You have: ${humanCounter} points`);
     console.log(`Computer has: ${computerCounter} points`);
-    
   } //Once the 5 rounds finish...
 
   //IF the human player has more points than the computer...
@@ -41,20 +40,20 @@ function playGame() {
 
     //IF the winner was...
     switch (winner) {
-        //the human...
+      //the human...
       case "humanWon":
         //ADD a win to the human's counter
         humanCounter++;
         //PRINT that the human won the round
         console.log("You won the round!");
         break;
-        //the computer...
+      //the computer...
       case "computerWon":
         //ADD a win to the computer's counter
         computerCounter++;
         //PRINT that the computer won the round
         console.log("You lost the round :C");
-        //no one...
+      //no one...
       case "tie":
         //PRINT that it was a tie
         console.log("the round is a tie!");
@@ -63,33 +62,35 @@ function playGame() {
 }
 //FUNCTION to get the computer's choice of hand
 function getComputerChoice() {
-    //SWITCH between Rock, Paper, Scissors
+  //CREATE variable to get the computer's choice
+  let computerChoice;
+  //SWITCH between Rock, Paper, Scissors
   switch (getRandomInt(3)) {
     //Rock
     case 0:
-        //ASSIGN Rock as the computer's choice
-      let computerChoice = "r";
+      //ASSIGN Rock as the computer's choice
+      computerChoice = "r";
       //Return the computer's choice
       return computerChoice;
       break;
-      //Paper
+    //Paper
     case 1:
-        //ASSIGN Paper as the computer's choice
-      let computerChoice = "p";
+      //ASSIGN Paper as the computer's choice
+      computerChoice = "p";
       //Return the computer's choice
       return computerChoice;
       break;
-      //Scissors
+    //Scissors
     case 2:
-        //ASSIGN Scissors as the computer's choice
-      let computerChoice = "s";
+      //ASSIGN Scissors as the computer's choice
+      computerChoice = "s";
       //Return the computer's choice
       return computerChoice;
       break;
   }
   //console.log(computerChoice);
 }
-//FUNCTION to get a 1,2 or 3 randomly 
+//FUNCTION to get a 1,2 or 3 randomly
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -97,19 +98,18 @@ function getRandomInt(max) {
 function getWinner(humanChoice, computerChoice) {
   //console.log(`human - ${humanChoice} computer - ${computerChoice}`);
   //IF both players choose the same...
-  if ((humanChoice == computerChoice)) {
+  if (humanChoice == computerChoice) {
     //RETURN that it's a tie
     return "tie";
     //IF the human wins...
   } else if (
-    ((humanChoice == "r") && (computerChoice == "s")) ||
-    ((humanChoice == "p") && (computerChoice == "r")) ||
-    ((humanChoice == "s") && (computerChoice == "p"))
+    (humanChoice == "r" && computerChoice == "s") ||
+    (humanChoice == "p" && computerChoice == "r") ||
+    (humanChoice == "s" && computerChoice == "p")
   ) {
     //console.log("humanreturnwon");
     //RETURN that the human won
     return "humanWon";
-
   }
   //If it wasn't a tie, and the human didn't win...
   else {
