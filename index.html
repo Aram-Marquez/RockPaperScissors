@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,7 +17,7 @@
   <body>
     <h1>Rock, Paper Scissors!</h1>
 
-    <ul>
+    <ul id="buttons">
       <li id="rock">
         <img src="img/rock.png" height="100px" alt="Rock Illustration" />
         <p>Rock!</p>
@@ -33,9 +33,9 @@
     </ul>
 
     <ul>
-      <li>You have 0 points</li>
-      <li>Computer has 0 points</li>
+      <li id="humanCounter">You have 0 points</li>
+      <li id="computerCounter">Computer has 0 points</li>
     </ul>
-    <p>__ won last round</p>
+    <p id="whoWonLast">__ won last round</p>
   </body>
 </html>

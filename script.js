@@ -1,15 +1,55 @@
 //Code to play Rock, Paper, Scissors
 
+const buttons = document.getElementById("buttons");
+const humanCounter = document.getElementById("humanCounter");
+const computerCounter = document.getElementById("computerCounter");
+const whoWonLast = document.getElementById("whoWonLast");
+
+let humanWins = 0;
+let computerWins = 0;
+
+buttons.addEventListener("click", (event) => {
+  if (event.target.tagName == "UL") return;
+  let computerChoice = getComputerChoice();
+  let winner;
+  switch (event.target.closest("li").id) {
+    case "rock":
+      winner = getWinner("r", computerChoice);
+      break;
+    case "paper":
+      winner = getWinner("p", computerChoice);
+      break;
+    case "scissors":
+      winner = getWinner("s", computerChoice);
+      break;
+  }
+
+  switch (winner) {
+    case "humanWon":
+      humanWins++;
+      humanCounter.textContent = `You have ${humanWins} points`;
+      whoWonLast.textContent = "You won last game!";
+      break;
+    case "computerWon":
+      computerWins++;
+      computerCounter.textContent = `Computer has ${computerWins} points`;
+      whoWonLast.textContent = "Computer won last game!";
+      break;
+    case "tie":
+      whoWonLast.textContent = "Last game was a tie!";
+      break;
+  }
+});
+
 //FUNCTION to run to start the game
 function playGame() {
   let humanCounter = 0;
   let computerCounter = 0;
-  
+
   //LOOP to play each of the 5 rounds
   for (i = 0; i < 5; i++) {
     //FUNCTION to play each round
     playRound();
-    
   } //Once the 5 rounds finish...
 
   //IF the human player has more points than the computer...
@@ -24,37 +64,38 @@ function playGame() {
     //OTHERWISE PRINT that it's a tie
     console.log("it was a tie!");
   }
-  //FUNCTION to play each round of the game
-  function playRound() {
-    //PROMPT the human for their choice
-    humanChoice = prompt("Choose R,P,S to play!", "").toLowerCase();
-    //GET the computer's choice
-    let computerChoice = getComputerChoice();
-    //GET winner from both choices of hand
-    let winner = getWinner(humanChoice, computerChoice);
+}
 
-    //IF the winner was...
-    switch (winner) {
-      //the human...
-      case "humanWon":
-        //ADD a win to the human's counter
-        humanCounter++;
-        //PRINT that the human won the round
-        console.log("You won the round!");
-        break;
-      //the computer...
-      case "computerWon":
-        //ADD a win to the computer's counter
-        computerCounter++;
-        //PRINT that the computer won the round
-        console.log("You lost the round :C");
-        break;
-      //no one...
-      case "tie":
-        //PRINT that it was a tie
-        console.log("the round is a tie!");
-        break;
-    }
+//FUNCTION to play each round of the game
+function playRound() {
+  //PROMPT the human for their choice
+  humanChoice = prompt("Choose R,P,S to play!", "").toLowerCase();
+  //GET the computer's choice
+  let computerChoice = getComputerChoice();
+  //GET winner from both choices of hand
+  let winner = getWinner(humanChoice, computerChoice);
+
+  //IF the winner was...
+  switch (winner) {
+    //the human...
+    case "humanWon":
+      //ADD a win to the human's counter
+      humanCounter++;
+      //PRINT that the human won the round
+      console.log("You won the round!");
+      break;
+    //the computer...
+    case "computerWon":
+      //ADD a win to the computer's counter
+      computerCounter++;
+      //PRINT that the computer won the round
+      console.log("You lost the round :C");
+      break;
+    //no one...
+    case "tie":
+      //PRINT that it was a tie
+      console.log("the round is a tie!");
+      break;
   }
 }
 //FUNCTION to get the computer's choice of hand
@@ -101,7 +142,7 @@ function getWinner(humanChoice, computerChoice) {
     (humanChoice == "p" && computerChoice == "r") ||
     (humanChoice == "s" && computerChoice == "p")
   ) {
-    //console.log("humanreturnwon");
+  
     //RETURN that the human won
     return "humanWon";
   }
