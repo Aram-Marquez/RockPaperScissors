@@ -2,19 +2,14 @@
 
 //FUNCTION to run to start the game
 function playGame() {
-  //ASSIGN counters for points of each player
   let humanCounter = 0;
   let computerCounter = 0;
-  //PRINT message to announce the start of the game
-  console.log("Let's play!");
+  
   //LOOP to play each of the 5 rounds
   for (i = 0; i < 5; i++) {
     //FUNCTION to play each round
     playRound();
-    //PRINT messages to announce the current state of the game
-    console.log(`Round ${i + 1}`);
-    console.log(`You have: ${humanCounter} points`);
-    console.log(`Computer has: ${computerCounter} points`);
+    
   } //Once the 5 rounds finish...
 
   //IF the human player has more points than the computer...
